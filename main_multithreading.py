@@ -1,3 +1,4 @@
+# To zostaw w spokoju!!!! -------------------------------------------------------------
 from threading import *
 from time import sleep
 from manipulator import Manipulator
@@ -23,6 +24,9 @@ def control_panel(m: Manipulator):
     
 def program (m:Manipulator):
     while True:
+# --------------------------------------------------------------------------------
+# Tu edytujesz logikę - nazwy krańcówek i wyjść wg. instrukcji z zajęć
+# ewentualnie sprawdź parametry obiektu lub skontaktuj się ze mną
         if m.kr_l == True: m.w_lewo = False
         if m.kr_p == True: m.w_prawo = False
         if m.kr_d == True: m.w_dol = False
@@ -60,8 +64,7 @@ def program (m:Manipulator):
         if m.stop == True and m.kr_g == True and m.kr_l == True: 
             m.w_dol = True
             m.stop = False
-        
-       
+# Dalej nie ma nic interesującego -------------------------------------------------------------------------
         m.make_move()
         sleep(0.1)
     
