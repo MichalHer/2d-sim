@@ -17,6 +17,7 @@ def control_panel(m: Manipulator):
         if keyboard.read_key() == "z":
             if m.stop != True:
                 m.start = True
+            else: m.stop = False
         if keyboard.read_key() == "w":
             m.start = False
             m.stop = True
@@ -33,12 +34,18 @@ def program (m:Manipulator):
         if m.kr_g == True: m.w_gore = False
         
         if m.start == True and m.kr_o == True and m.kr_d == True and m.kr_l == True: m.w_gore = True
-        if m.start == True and m.kr_o == True and m.kr_g == True and m.kr_l == True: m.w_prawo = True
-        if m.start == True and m.kr_o == True and m.kr_g == True and m.kr_p == True: m.w_dol = True
-        if m.start == True and m.kr_o == True and m.kr_d == True and m.kr_p == True: m.chwytak = True
         if m.start == True and m.kr_z == True and m.kr_d == True and m.kr_p == True: m.w_gore = True
+        if m.stop == True and m.kr_d == True and m.kr_p == True: m.w_gore = True
+        
+        if m.start == True and m.kr_o == True and m.kr_g == True and m.kr_l == True: m.w_prawo = True
+        
         if m.start == True and m.kr_z == True and m.kr_g == True and m.kr_p == True: m.w_lewo = True
+        if m.stop == True and m.kr_g == True and m.kr_p == True: m.w_lewo = True
+        
+        if m.start == True and m.kr_o == True and m.kr_g == True and m.kr_p == True: m.w_dol = True
         if m.start == True and m.kr_z == True and m.kr_g == True and m.kr_l == True: m.w_dol = True
+        
+        if m.start == True and m.kr_o == True and m.kr_d == True and m.kr_p == True: m.chwytak = True
         
         if m.start == True and m.kr_z == True and m.kr_d == True and m.kr_l == True: 
             m.chwytak = False
@@ -50,20 +57,18 @@ def program (m:Manipulator):
             m.w_prawo = False
             m.w_lewo = True
         
-        if m.stop == True and m.kr_p == True and m.w_dol == True:
+        if m.stop == True and m.kr_p == True and m.w_gore == True:
             m.w_dol == False
             m.w_gore == True
-            
-        if m.stop == True and m.kr_l == True and m.w_gore == True:
+        
+        if m.stop == True and m.kr_l == True and m.w_dol == True:
             m.w_gore == False
             m.w_dol == True
-            
 
-        if m.stop == True and m.kr_d == True and m.kr_p == True: m.w_gore = True
-        if m.stop == True and m.kr_g == True and m.kr_p == True: m.w_lewo = True
         if m.stop == True and m.kr_g == True and m.kr_l == True: 
             m.w_dol = True
             m.stop = False
+            
 # Dalej nie ma nic interesującego -------------------------------------------------------------------------
         m.make_move()
         sleep(0.1)
